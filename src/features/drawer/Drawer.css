@@ -1,0 +1,9 @@
+#drawer {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/*.bp3-tabs {*/
+/*    padding-left: 10px;*/
+/*}*/
