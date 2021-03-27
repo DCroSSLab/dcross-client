@@ -5,6 +5,7 @@ import "./Drawer.css"
 import LayersPanel from "./panels/LayersPanel";
 import FiltersPanel from "./panels/FiltersPanel";
 import ReportsPanel from "./panels/ReportsPanel";
+import {ButtonGroup} from "@material-ui/core";
 
 
 export default function UtilDrawer(props) {
@@ -32,11 +33,20 @@ export default function UtilDrawer(props) {
     const [tab, selectTab] = useState("layer-tab");
     const handleTabChange = (tabID) => selectTab(tabID);
 
+    const goToReports = () => {
+        selectTab("report-tab");
+        handleOpen();
+    }
+
     return (
         <div className={"map-overlay"} ref={containerRef}>
-            <Button className={"map-overlay-button"} intent={"primary"} onClick={handleOpen} text={"Data Options"}/>
+            <ButtonGroup className="map-overlay-button">
+                <Button intent={"primary"} onClick={handleOpen} text={"Data Options"}/>
+                <Button intent={"primary"} onClick={goToReports} text={"Reports"}/>
+            </ButtonGroup>
+            {/*<Button className={"map-overlay-button"} intent={"primary"} onClick={handleOpen} text={"Data Options"}/>*/}
             <Drawer className={"map-overlay-drawer"} isOpen={isOpen} onClose={handleClose} position={Position.LEFT}
-                    title={"Data Options"} usePortal={true} size={Drawer.SIZE_STANDARD}
+                    title={"Data Options"} usePortal={true} size={Drawer.SIZE_SMALL}
                     >
                 <div id="drawer">
                     <Tabs selectedTabId={tab} large={true} onChange={handleTabChange} animate={true}>

@@ -1,7 +1,7 @@
 import {useState} from "react";
 import './Map.css'
 import {EarthquakeLayer} from "../earthquakes/EarthquakeLayer";
-import  MapGL from 'react-map-gl';
+import MapGL, {AttributionControl, NavigationControl, ScaleControl} from 'react-map-gl';
 import {TelegramReportLayer} from "../reports/telegram/TelegramReportLayer";
 import EarthquakePopup from "../earthquakes/EarthquakePopup";
 import TelegramReportPopup from "../reports/telegram/TelegramReportPopup";
@@ -14,6 +14,21 @@ import WeatherPopup from "../weather/WeatherPopup";
 
 const TOKEN = "pk.eyJ1IjoiZmFyYWF6YiIsImEiOiJja200bTV1OHYwNXYzMnB1aXJ5enN0cXBjIn0.XSvpgelcXXCi90zU6ZzlKw";
 
+const scaleControlStyle= {
+    left: 100,
+    bottom: 10
+};
+
+const navControlStyle= {
+    right: 10,
+    top: 10
+};
+
+const attributionStyle= {
+    right: 0,
+    bottom: 0
+};
+
 export default function Map() {
 
     const [viewport, setViewport] = useState({
@@ -25,8 +40,8 @@ export default function Map() {
 
     const [earthquakeLayerVisibility, showEarthquakeLayer] = useState(true);
     const [nowcastLayerVisibility, showNowcastLayer] = useState(true);
-    const [telegramReportLayerVisibility, showTelegramReportLayer] = useState(false);
-    const [weatherLayerVisibility, showWeatherLayer] = useState(true);
+    const [telegramReportLayerVisibility, showTelegramReportLayer] = useState(true);
+    const [weatherLayerVisibility, showWeatherLayer] = useState(false);
 
     const [earthquakePopup, setEarthquakePopup] = useState(null);
     const [telegramPopup, setTelegramPopup] = useState(null);
@@ -36,6 +51,7 @@ export default function Map() {
     return (
         <MapGL {...viewport} width="100vw" height="100vh" onViewportChange={setViewport}
                mapStyle={'mapbox://styles/faraazb/ckk04lhmr165317nyy1u1o5ys'}
+               attributionControl={false}
             // mapStyle='mapbox://styles/faraazb/ckk25t5n3psi17qwkxsybbqw'
         >
 
@@ -54,7 +70,9 @@ export default function Map() {
             {nowcastLayerVisibility && (
                 <NowcastLayer onClick={setNowcastPopup} />
             )}
-            <TelegramReportLayer onClick={setTelegramPopup}/>
+            {telegramReportLayerVisibility && (
+                <TelegramReportLayer onClick={setTelegramPopup}/>
+            )}
 
             {nowcastPopup && (
                 <NowcastPopup nowcast={nowcastPopup} setNowcast={setNowcastPopup} />
@@ -68,6 +86,10 @@ export default function Map() {
             {earthquakePopup && (
                 <EarthquakePopup earthquake={earthquakePopup} setWeather={setEarthquakePopup}/>
             )}
+            <NavigationControl style={navControlStyle} />
+            <ScaleControl maxWidth={100} unit="metric" style={scaleControlStyle} />
+            <AttributionControl compact={true} style={attributionStyle}
+                customAttribution={"DCroSS@eyic"}/>
         </MapGL>
     );
 }

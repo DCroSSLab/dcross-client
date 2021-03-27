@@ -18,6 +18,8 @@ function EarthquakePopup(props) {
                     {displayName}
                     <br/>
                     Depth: {earthquake.properties.depth.value} km
+                    <br/>
+                    Time: {earthquake.properties.time}
                 </div>
                 {/*<img width={240} src={info.image} />*/}
             </div>
