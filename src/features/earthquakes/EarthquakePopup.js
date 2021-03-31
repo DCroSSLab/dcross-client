@@ -1,3 +1,13 @@
+/**
+ *
+ * Project Name: 	DCroSS
+ * Author List: 	Faraaz Biyabani
+ * Filename: 		EarthquakePopup.js
+ * Description:     Popup for earthquake markers.
+ *
+ */
+
+
 import React from "react";
 import {Popup} from "react-map-gl";
 
@@ -21,7 +31,6 @@ function EarthquakePopup(props) {
                     <br/>
                     Time: {earthquake.properties.time}
                 </div>
-                {/*<img width={240} src={info.image} />*/}
             </div>
         </Popup>
     );

@@ -1,0 +1,23 @@
+
+
+.data-options-panel-reports {
+    margin-right: 10px;
+}
+
+.data-options-panel-report-card {
+    margin-bottom: 5px;
+    margin-left: 1px;
+}
+
+.carousel-root {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    overflow: visible;
+}
+
+.carousel {
+    flex-wrap: nowrap;
+    transform: translateZ(0);
+    /*overflow-x: scroll;*/
+}

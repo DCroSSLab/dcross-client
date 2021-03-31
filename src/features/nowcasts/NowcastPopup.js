@@ -1,10 +1,19 @@
+/**
+ *
+ * Project Name: 	DCroSS
+ * Author List: 	Faraaz Biyabani
+ * Filename: 		NowcastPopup.js
+ * Description:     Popup for nowcast markers.
+ *
+ */
+
+
 import {Popup} from "react-map-gl";
 import React from "react";
 
 
 function NowcastPopup (props) {
     const {nowcast, setNowcast} = props;
-    // const displayName = `${report.properties.name}, ${report.properties.magnitude}`;
 
     return (
         <Popup
@@ -18,9 +27,6 @@ function NowcastPopup (props) {
                 <div style={{maxWidth: 400, cursor: "pointer"}}>
                     IMD Nowcast
                     <br/>
-                    {/*Coordinates:*/}
-                    {/*{nowcast.geometry.coordinates[0]}, {nowcast.geometry.coordinates[1]}*/}
-                    {/*<br/>*/}
                     Source: {nowcast.properties.station_name}, {nowcast.properties.source}
                     <br/>
                     Issue Time:
@@ -33,7 +39,6 @@ function NowcastPopup (props) {
                     <br/>
                     {nowcast.properties.forecast.description}
                 </div>
-                {/*<img width={240} src={info.image} />*/}
             </div>
         </Popup>
     );

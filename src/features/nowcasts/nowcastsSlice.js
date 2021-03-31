@@ -1,6 +1,18 @@
+/**
+ *
+ * Project Name: 	DCroSS
+ * Author List: 	Faraaz Biyabani
+ * Filename: 		nowcastsSlice.js
+ * Description:     Redux nowcasts slice, IMD nowcast data is centralized through this.
+ *
+ */
+
+
 import {createAsyncThunk, createSelector, createSlice} from "@reduxjs/toolkit";
 import axios from "axios";
 
+//Severity is controlled by adding/removing strings from an array
+//By default, "Low" severity nowcasts are fetched but hidden.
 const initialState = {
     data: [],
     filters: {
@@ -56,10 +68,19 @@ export const { setSeverityFilter } = nowcastsSlice.actions;
 export const selectAllNowcasts = (state) => state.nowcasts.data;
 export const selectNowcastFilters = (state) => state.nowcasts.filters;
 
+
+//Every weather object received from a GET also has a severity field that we
+//can check against our current "enabled" filters and accordingly decide which
+//objects to show on the map.
+
+//The below selector helps us to filter data without losing the original payload received
+//One of the several advantages of using Redux
 export const selectFilteredNowcasts = createSelector(
     selectAllNowcasts,
     selectNowcastFilters,
     (nowcasts, filters) => {
+        //For every nowcast, return True (i.e DO NOT remove it) if filters.severity array includes severity of
+        //the current nowcast; else return False (i.e remove it)
         return nowcasts.filter(nowcast => {
             return filters.severity.includes(nowcast["properties"]["forecast"]["severity"]);
         });

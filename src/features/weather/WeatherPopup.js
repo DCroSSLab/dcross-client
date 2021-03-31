@@ -1,3 +1,15 @@
+/**
+ * (Deprecated)
+ * Project Name: 	DCroSS
+ * Author List: 	Faraaz Biyabani, Saumyaranjan Parida
+ * Filename: 		WeatherPopup.js
+ * Description:     Popup that comes when you click on a AWS-ARG weather marker
+ *                  Currently, instead of makers, a Mapbox data "source" and a "layer" ()
+ *                  is used to reduce the lag that would occur due to re-rendering 700+ markers
+ *
+ */
+
+
 import React from "react";
 import {Popup} from "react-map-gl";
 
@@ -29,25 +41,6 @@ function WeatherPopup(props) {
                     Wind Speed: {weather.properties.forecast.rainfall.value} kt
                     <br/>
                     Wind Direction: {weather.properties.forecast.rainfall.value} Degrees
-                    {/*{weather.properties.forecast.rainfall.value && (*/}
-                    {/*    `Rainfall: ${weather.properties.forecast.rainfall.value} mm`*/}
-                    {/*)}*/}
-                    {/*<br/>*/}
-                    {/*{weather.properties.forecast.rainfall.value && (*/}
-                    {/*    `Temperature: ${weather.properties.forecast.temperature.value} C`*/}
-                    {/*)}*/}
-                    {/*<br/>*/}
-                    {/*{weather.properties.forecast.rainfall.value && (*/}
-                    {/*    `Real Humidity: {weather.properties.forecast.real_humidity.value}%`*/}
-                    {/*)}*/}
-                    {/*<br/>*/}
-                    {/*{weather.properties.forecast.wind_speed.value && (*/}
-                    {/*    `Wind Speed: ${weather.properties.forecast.rainfall.value} kt`*/}
-                    {/*)}*/}
-                    {/*<br/>*/}
-                    {/*{weather.properties.forecast.wind_direction.value && (*/}
-                    {/*    `Wind Direction: ${weather.properties.forecast.rainfall.value} Degrees`*/}
-                    {/*)}*/}
                 </div>
                 {/*<img width={240} src={info.image} />*/}
             </div>

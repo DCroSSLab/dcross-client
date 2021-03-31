@@ -1,4 +1,14 @@
-import {createAsyncThunk, nanoid, createSlice, createSelector} from "@reduxjs/toolkit";
+/**
+ *
+ * Project Name: 	DCroSS
+ * Author List: 	Faraaz Biyabani
+ * Filename: 		earthquakesSlice.js
+ * Description:     Redux earthquakes slice, NCS earthquake data is centralized through this.
+ *
+ */
+
+
+import {createAsyncThunk, createSlice, createSelector} from "@reduxjs/toolkit";
 import axios from "axios";
 
 const initialState = {
@@ -38,7 +48,7 @@ const markerColor = (earthquake) => {
         earthquake.properties.classname = 'earthquake-moderate'
     }
     else if (5.5 <= mag && mag < 6.0) {
-        earthquake.properties.fill = '#d96f32'
+        earthquake.properties.fill = '#fcba03'
         earthquake.properties.classname = 'earthquake-strong'
     }
     else if (mag >= 6.0) {
@@ -84,13 +94,15 @@ export const selectAllEarthquakes = (state) => state.earthquakes.data;
 
 export const selectFilters = (state) => state.earthquakes.filters;
 
+
+//The below selector helps us to filter data without losing the original payload received
+//One of the several advantages of using Redux
 export const selectFilteredEarthquakes = createSelector(
     selectAllEarthquakes,
     selectFilters,
     (earthquakes, filters) => {
         const {magnitude, depth} = filters;
         return earthquakes.filter(earthquake => {
-            const matches = magnitude.low <= earthquake.properties.magnitude <= magnitude.high;
             const magnitudeMatches = earthquake.properties.magnitude >= magnitude.low &&
                 earthquake.properties.magnitude <= magnitude.high
             const depthMatches = earthquake.properties.depth.value >= depth.low &&

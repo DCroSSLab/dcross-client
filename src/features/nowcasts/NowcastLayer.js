@@ -1,3 +1,15 @@
+/**
+ *
+ * Project Name: 	DCroSS
+ * Author List: 	Faraaz Biyabani
+ * Filename: 		NowcastLayer.js
+ * Description:     This component dispatches fetch actions and then displays the nowcast
+ *                  markers on the map, using the redux store.
+ *
+ */
+
+
+
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";

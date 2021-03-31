@@ -19,3 +19,15 @@
 .map-overlay-drawer {
     z-index: 10;
 }
+
+.custom-tooltip {
+    position: absolute;
+    margin: 8px;
+    padding: 4px;
+    background: #fff;
+    color: rgb(0, 0, 0);
+    max-width: 350px;
+    font-size: 15px;
+    z-index: 9;
+    pointer-events: none;
+}

@@ -1,8 +1,20 @@
+/**
+ *
+ * Project Name: 	DCroSS
+ * Author List: 	Faraaz Biyabani
+ * Filename: 		EarthquakeLayer.js
+ * Description:     This component dispatches fetch actions and then displays the earthquake
+ *                  markers on the map, using the redux store.
+ *
+ */
+
+
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {fetchEarthquakes, selectAllEarthquakes, selectFilteredEarthquakes} from "./earthquakesSlice";
+import {fetchEarthquakes, selectFilteredEarthquakes} from "./earthquakesSlice";
 import {useEffect} from "react";
 import {Marker} from "react-map-gl";
+import "./EarthquakeLayer.css"
 
 
 const ICON = `M20.2,15.7L20.2,15.7c1.1-1.6,1.8-3.6,1.8-5.7c0-5.6-4.5-10-10-10S2,4.5,2,10c0,2,0.6,3.9,1.6,5.4c0,0.1,0.1,0.2,0.2,0.3

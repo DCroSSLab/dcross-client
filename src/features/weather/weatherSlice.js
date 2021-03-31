@@ -1,3 +1,14 @@
+/**
+ *
+ * Project Name: 	DCroSS
+ * Author List: 	Faraaz Biyabani
+ * Filename: 		weatherSlice.js
+ * Description:     Redux weather slice, AWS-ARG weather data is centralized through this.
+ *
+ */
+
+
+
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import axios from "axios";
 

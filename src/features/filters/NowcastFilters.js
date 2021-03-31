@@ -1,3 +1,15 @@
+/**
+ *
+ * Project Name: 	DCroSS
+ * Author List: 	Faraaz Biyabani
+ * Filename: 		NowcastFilters.js
+ * Description:     Filter component for nowcasts, which gets displayed within the Filters tab
+ *                  inside the "Data Options" drawer.
+ * Usage:           ../drawers/panels/FiltersPanel.js
+ *
+ */
+
+
 import {Checkbox} from "@blueprintjs/core";
 import {useDispatch, useSelector} from "react-redux";
 import {selectNowcastFilters, setSeverityFilter} from "../nowcasts/nowcastsSlice";

@@ -1,17 +1,18 @@
 /**
  *
  * Project Name: 	DCroSS
- * Author List: 	Faraaz Biyabani, Priya Pathak
- * Filename: 		TelegramReportPopup.js
- * Description:     Popup for Telegram report markers.
+ * Author List: 	Faraaz Biyabani, Saumyaranjan Parida
+ * Filename: 		TwitterReportPopup.js
+ * Description:     Popup for Twitter report markers
  *
  */
+
 
 import {Popup} from "react-map-gl";
 import React from "react";
 
 
-function TelegramReportPopup (props) {
+function TwitterReportPopup (props) {
     const {report, setReport} = props;
     const images = report.properties.description.images
 
@@ -19,29 +20,28 @@ function TelegramReportPopup (props) {
         <Popup
             tipSize={5}
             anchor="top"
-            longitude={report.geometry.coordinates[0]}
-            latitude={report.geometry.coordinates[1]}
+            longitude={report.geometry.coordinates[0][0][0]}
+            latitude={report.geometry.coordinates[0][0][1]}
             closeOnClick={true}
             onClose={setReport} >
             <div>
                 <div>
                     <b>
-                        Telegram
+                        Twitter
                     </b>
                     <br/>
                     Time: {report.properties.time}
                     <br/>
-                    Reporter said:
+                    {report.properties.username} said:
                     <br/>
                     {report.properties.description.text}
                 </div>
                 {images.length > 0 &&
-                <img height={200} src={"http://localhost:3001/reports/telegram/images/"+
-                    images[0].filename+images[0].extension} />
+                <img height={200} src={images[0]} />
                 }
             </div>
         </Popup>
     );
 }
 
-export default React.memo(TelegramReportPopup);
+export default React.memo(TwitterReportPopup);

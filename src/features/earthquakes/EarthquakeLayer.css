@@ -1,0 +1,57 @@
+/**
+ *
+ * Project Name: 	DCroSS
+ * Author List: 	Faraaz Biyabani
+ * Filename: 		EarthquakeLayer.css
+ * Description:     Ripple animations for some earthquakes (Incomplete)
+ *
+ */
+
+.earthquake-moderate {
+    background-color: #35ffc3;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    animation: ripple 0.40s linear infinite;
+}
+
+@keyframes ripple {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 0, 0.3),
+            /*0 0 0 0.2em rgba(255, 255, 0, 0.3),*/
+        0 0 0 0.3em rgba(255, 255, 0, 0.3)
+        /*0 0 0 0.4em rgba(255, 255, 0, 0.3);*/
+    }
+    100% {
+        box-shadow: 0 0 0 0.4em rgba(255, 255, 0, 0.3),
+            /*0 0 0 0.5em rgba(255, 255, 0, 0.3),*/
+            /*0 0 0 0.6em rgba(255, 255, 0, 0.3),*/
+        0 0 0 0.7em rgba(255, 255, 0, 0);
+    }
+}
+
+
+
+.earthquake-major {
+    background-color: #35ffc3;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    animation: ripple-major 0.40s linear infinite;
+}
+
+@keyframes ripple-major {
+    0% {
+        box-shadow: 0 0 0 0.1em rgba(221, 0, 0, 0.3),
+        0 0 0 0.2em rgba(221, 0, 0, 0.3),
+        0 0 0 0.3em rgba(221, 0, 0, 0.3),
+        0 0 0 0.7em rgba(221, 0, 0, 0.3);
+    }
+    100% {
+        box-shadow: 0 0 0 0.3em rgba(221, 0, 0, 0.3),
+        0 0 0 0.5em rgba(221, 0, 0, 0.3),
+        0 0 0 0.6em rgba(221, 0, 0, 0.3),
+        0 0 0 0.7em rgba(221, 0, 0, 0);
+    }
+}
+
